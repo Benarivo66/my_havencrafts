@@ -1,3 +1,4 @@
+// tailwind.config.ts
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -12,21 +13,22 @@ const config: Config = {
         '13': 'repeat(13, minmax(0, 1fr))',
       },
       colors: {
-        blue: {
-          400: '#2589FE',
-          500: '#0070F3',
-          600: '#2F6FEB',
-        },
+        primary: '#475b63',
+        secondary: '#729b79',
+        tertiary: '#bacdb0',
+        tertiary1: '#2e2c2f',
+        tertiary2: '#f3e8ee'
       },
-    },
-    keyframes: {
-      shimmer: {
-        '100%': {
-          transform: 'translateX(100%)',
+      keyframes: {
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
         },
       },
     },
   },
   plugins: [require('@tailwindcss/forms')],
 };
+
 export default config;

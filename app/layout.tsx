@@ -1,13 +1,15 @@
 import '@/app/ui/global.css'
-import { inter } from '@/app/ui/fonts';
+import { openSans } from '@/app/ui/fonts';
 import { Metadata } from 'next';
+import { Footer } from './ui/footer';
+import { Header } from './ui/header';
  
 export const metadata: Metadata = {
   title: {
-    template: '%s | Acme Dashboard',
-    default: 'Acme Dashboard',
+    template: '%s | Handcraft Haven',
+    default: 'Handcraft Haven',
   },
-  description: 'The official Next.js Learn Dashboard built with App Router.',
+  description: 'Website for Craftsmen and women to showcase their skill and products',
   metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
 };
 
@@ -18,7 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${openSans.className} antialiased`}>
+        <div className="min-h-screen flex flex-col">
+        <Header />
+        {children}
+        <Footer />
+        </div>
+        </body>
     </html>
   );
 }
