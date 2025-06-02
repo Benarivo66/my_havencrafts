@@ -1,5 +1,3 @@
-// This file contains placeholder data that you'll be replacing with real data in the Data Fetching chapter:
-// https://nextjs.org/learn/dashboard-app/fetching-data
 const users = [
   {
     id: '410544b2-4001-4271-9855-fec4b6a6442a',
@@ -8,7 +6,8 @@ const users = [
     password: '123456',
     isSeller: false,
     bio: 'I sell all types of handcraft for small price',
-    profileImage: 'https://example.com/images/gimoh.jpg',
+    phone: '07012345678',
+    profileImage: '/users/gimoh.webp',
   },
   {
     id: 'a1f7a310-89d4-4f65-aab6-1a1e3c4fd1a1',
@@ -17,7 +16,8 @@ const users = [
     password: '123456',
     isSeller: true,
     bio: 'Handwoven baskets and eco-friendly decor pieces.',
-    profileImage: 'https://example.com/images/zara.jpg',
+    phone: '07081234567',
+    profileImage: '/users/zara.webp',
   },
   {
     id: 'b2f68dc3-221a-4925-9344-d62b5d73cc13',
@@ -26,7 +26,8 @@ const users = [
     password: '123456',
     isSeller: true,
     bio: 'Leather goods and traditional accessories made by hand.',
-    profileImage: 'https://example.com/images/tariq.jpg',
+    phone: '07078123456',
+    profileImage: '/users/tariq.webp',
   },
   {
     id: 'c3e7adf1-0d3f-42f7-b5f4-9423d2aa245e',
@@ -35,7 +36,8 @@ const users = [
     password: '123456',
     isSeller: true,
     bio: 'Beaded jewelry and African-inspired accessories.',
-    profileImage: 'https://example.com/images/halima.jpg',
+    phone: '07067812345',
+    profileImage: '/users/halima.webp',
   },
   {
     id: 'd419ac48-9084-4b99-964b-ef452a761102',
@@ -44,7 +46,8 @@ const users = [
     password: '123456',
     isSeller: true,
     bio: 'I create detailed wood carvings and sculptures.',
-    profileImage: 'https://example.com/images/emeka.jpg',
+    phone: '07056781234',
+    profileImage: '/users/emeka.webp',
   },
   {
     id: 'e5098b1a-e331-4d41-a92f-9ecb632cb018',
@@ -53,7 +56,8 @@ const users = [
     password: '123456',
     isSeller: true,
     bio: 'Crochet bags and baby clothes made with care.',
-    profileImage: 'https://example.com/images/lola.jpg',
+    phone: '07045678123',
+    profileImage: '/users/lola.webp',
   },
   {
     id: 'f6a0032e-28f6-4a61-9e43-2fdb62de31de',
@@ -62,37 +66,40 @@ const users = [
     password: '123456',
     isSeller: true,
     bio: 'Specialist in traditional woven hats and mats.',
-    profileImage: 'https://example.com/images/sani.jpg',
+    phone: '07034567812',
+    profileImage: '/users/sani.webp',
   },
   {
-    id: 'g7b187d9-516f-464d-9f42-8d7cb7190c2f',
+    id: 'aa9f18c2-1f9f-4239-9c38-7c56e2abf11e', 
     name: 'Ngozi Eze',
     email: 'ngozi@craftmail.com',
     password: '123456',
     isSeller: true,
     bio: 'Handmade dolls and cultural toys for kids.',
-    profileImage: 'https://example.com/images/ngozi.jpg',
+    phone: '07023456781',
+    profileImage: '/users/ngozi.webp',
   },
   {
-    id: 'h8c8e4e6-2263-44ae-91c2-d2dce541bc12',
+    id: 'bb7d3e98-04f2-4e44-9f78-12d0c95eb7af', 
     name: 'Yusuf Ali',
     email: 'yusuf@craftmail.com',
     password: '123456',
     isSeller: true,
     bio: 'Metal jewelry and abstract ornaments.',
-    profileImage: 'https://example.com/images/yusuf.jpg',
+    phone: '07021345678',
+    profileImage: '/users/yusuf.webp',
   },
   {
-    id: 'i9d0e8c1-3112-4dd1-b74f-cac51d0f388f',
+    id: 'cc6adf23-5c0a-4aa1-95b3-f342c4db7f44', 
     name: 'Amina Bello',
     email: 'amina@craftmail.com',
     password: '123456',
     isSeller: true,
     bio: 'Embroidery and textile arts inspired by tradition.',
-    profileImage: 'https://example.com/images/amina.jpg',
+    phone: '07028134567',
+    profileImage: '/users/amina.webp',
   },
 ];
-
 
 const products = [
   {
@@ -101,31 +108,35 @@ const products = [
     description: "A sturdy, eco-friendly handwoven basket perfect for storage or decor.",
     price: 25.99,
     imageUrl: "https://example.com/images/handwoven-basket.jpg",
-    sellerId: "a1f7a310-89d4-4f65-aab6-1a1e3c4fd1a1",
+    category: "Home Decor",
+    sellerId: "410544b2-4001-4271-9855-fec4b6a6442a"
   },
   {
     id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345602",
     name: "Leather Wallet",
     description: "Classic handcrafted leather wallet with multiple compartments.",
-    price: 45.00,
+    price: 45.0,
     imageUrl: "https://example.com/images/leather-wallet.jpg",
-    sellerId: "b2f68dc3-221a-4925-9344-d62b5d73cc13",
+    category: "Accessories",
+    sellerId: "a1f7a310-89d4-4f65-aab6-1a1e3c4fd1a1"
   },
   {
     id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345603",
     name: "Beaded Necklace Set",
     description: "Colorful beaded necklace with matching earrings, inspired by African designs.",
-    price: 30.50,
+    price: 30.5,
     imageUrl: "https://example.com/images/beaded-necklace.jpg",
-    sellerId: "c3e7adf1-0d3f-42f7-b5f4-9423d2aa245e",
+    category: "Jewelry",
+    sellerId: "b2f68dc3-221a-4925-9344-d62b5d73cc13"
   },
   {
     id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345604",
     name: "Wooden Sculpture",
     description: "Hand-carved wooden sculpture made from locally sourced mahogany.",
-    price: 60.00,
+    price: 60.0,
     imageUrl: "https://example.com/images/wood-sculpture.jpg",
-    sellerId: "d419ac48-9084-4b99-964b-ef452a761102",
+    category: "Art",
+    sellerId: "c3e7adf1-0d3f-42f7-b5f4-9423d2aa245e"
   },
   {
     id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345605",
@@ -133,23 +144,26 @@ const products = [
     description: "Soft crochet booties ideal for newborns, made with organic yarn.",
     price: 18.75,
     imageUrl: "https://example.com/images/baby-booties.jpg",
-    sellerId: "e5098b1a-e331-4d41-a92f-9ecb632cb018",
+    category: "Baby",
+    sellerId: "d419ac48-9084-4b99-964b-ef452a761102"
   },
   {
     id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345606",
     name: "Woven Straw Hat",
     description: "Traditional straw hat with intricate patterns and great sun protection.",
-    price: 22.00,
+    price: 22.0,
     imageUrl: "https://example.com/images/straw-hat.jpg",
-    sellerId: "f6a0032e-28f6-4a61-9e43-2fdb62de31de",
+    category: "Fashion",
+    sellerId: "e5098b1a-e331-4d41-a92f-9ecb632cb018"
   },
   {
     id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345607",
     name: "Handmade Cloth Doll",
     description: "Custom cloth doll made with love, featuring traditional attire.",
-    price: 28.00,
+    price: 28.0,
     imageUrl: "https://example.com/images/cloth-doll.jpg",
-    sellerId: "g7b187d9-516f-464d-9f42-8d7cb7190c2f",
+    category: "Toys",
+    sellerId: "f6a0032e-28f6-4a61-9e43-2fdb62de31de"
   },
   {
     id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345608",
@@ -157,25 +171,29 @@ const products = [
     description: "Elegant, rustic earrings crafted from hammered brass.",
     price: 16.99,
     imageUrl: "https://example.com/images/brass-earrings.jpg",
-    sellerId: "h8c8e4e6-2263-44ae-91c2-d2dce541bc12",
+    category: "Jewelry",
+    sellerId: "aa9f18c2-1f9f-4239-9c38-7c56e2abf11e"
   },
   {
     id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345609",
     name: "Embroidered Pillow Cover",
     description: "Pillow cover with traditional hand-stitched embroidery patterns.",
-    price: 32.00,
+    price: 32.0,
     imageUrl: "https://example.com/images/embroidered-pillow.jpg",
-    sellerId: "i9d0e8c1-3112-4dd1-b74f-cac51d0f388f",
+    category: "Home Decor",
+    sellerId: "bb7d3e98-04f2-4e44-9f78-12d0c95eb7af"
   },
   {
     id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345610",
     name: "Mini Handcraft Bundle",
     description: "A gift set including a mini basket, soap dish, and beaded keychain.",
-    price: 55.00,
+    price: 55.0,
     imageUrl: "https://example.com/images/handcraft-bundle.jpg",
-    sellerId: "410544b2-4001-4271-9855-fec4b6a6442a",
+    category: "Gift Sets",
+    sellerId: "cc6adf23-5c0a-4aa1-95b3-f342c4db7f44"
   },
 ];
+
 
 const reviews = [
   {
@@ -222,21 +240,21 @@ const reviews = [
   },
   {
     id: "f001c4d0-2183-4c63-a6f5-51d9b0d55007",
-    sellerId: "g7b187d9-516f-464d-9f42-8d7cb7190c2f",
+    sellerId: "aa9f18c2-1f9f-4239-9c38-7c56e2abf11e",
     productId: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345607",
     content: "My daughter loves it! Such a unique doll.",
     rating: 5,
   },
   {
     id: "f001c4d0-2183-4c63-a6f5-51d9b0d55008",
-    sellerId: "h8c8e4e6-2263-44ae-91c2-d2dce541bc12",
+    sellerId: "bb7d3e98-04f2-4e44-9f78-12d0c95eb7af",
     productId: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345608",
     content: "Stylish and simple. I get compliments all the time!",
     rating: 5,
   },
   {
     id: "f001c4d0-2183-4c63-a6f5-51d9b0d55009",
-    sellerId: "i9d0e8c1-3112-4dd1-b74f-cac51d0f388f",
+    sellerId: "cc6adf23-5c0a-4aa1-95b3-f342c4db7f44",
     productId: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345609",
     content: "Lovely embroidery. Looks great on my couch.",
     rating: 4,

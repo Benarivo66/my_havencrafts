@@ -6,7 +6,7 @@ import Image from 'next/image';
 
 export default function Page() {
   return (
-    <main className="space-y-16">
+    <div className="space-y-16">
       {/* Hero Section */}
 <section
   className="relative h-[60vh] bg-cover bg-center text-white flex items-center justify-center"
@@ -63,14 +63,14 @@ export default function Page() {
         <h2 className="text-3xl font-semibold text-center mb-8">Discover Our Special Pieces</h2>
         <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
           <div className="border rounded-lg overflow-hidden shadow-sm">
-            <img src="../home/baskets.webp" alt="Handwoven Basket" className="w-full h-64 object-cover" />
+            <img src="/home/baskets.webp" alt="Handwoven Basket" className="w-full h-64 object-cover" />
             <div className="p-4">
               <h3 className="text-xl font-bold mb-2">Handwoven Heritage Basket</h3>
               <p className="text-gray-600">Crafted with love using ancestral techniques passed down through generations.</p>
             </div>
           </div>
           <div className="border rounded-lg overflow-hidden shadow-sm">
-            <img src="../home/mask.webp" alt="Decorative Wooden Mask" className="w-full h-64 object-cover" />
+            <img src="/home/mask.webp" alt="Decorative Wooden Mask" className="w-full h-64 object-cover" />
             <div className="p-4">
               <h3 className="text-xl font-bold mb-2">Decorative Wooden Mask</h3>
               <p className="text-gray-600">A striking expression of culture, history, and fine craftsmanship.</p>
@@ -78,7 +78,7 @@ export default function Page() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
 
