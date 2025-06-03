@@ -10,8 +10,8 @@ export function Header() {
         <Link href="/" className={`text-xl font-bold ${roboto.className}`}>
           Handcraft Haven
         </Link>
-        <Link href="/dashboard/sellers" className="hover:underline">Sellers</Link>
-        <Link href="#" className="hover:underline">Products</Link>
+        <Link href="/dashboard/sellers/" className="hover:underline">Sellers</Link>
+        <Link href="/dashboard/products/" className="hover:underline">Products</Link>
         <Link href="#" className="hover:underline">Join Us</Link>
       </div>
 

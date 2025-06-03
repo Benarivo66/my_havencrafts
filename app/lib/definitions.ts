@@ -14,9 +14,9 @@ export type ProductField = {
   name: string;
   description: string;
   price: number;
-  imageUrl: string;
+  imageUrl?: string;
   sellerId: string;
-  category: string; 
+  category?: string; 
 };
 
 export type ReviewField = {
@@ -26,3 +26,17 @@ export type ReviewField = {
   content: string;
   rating: number; 
 };
+
+export type SellerWithProductsField = {
+  seller_id: string;
+  seller_name: string;
+  seller_email: string;
+  seller_password: string;
+  seller_bio: string | undefined;
+  seller_phone: string | undefined;
+  seller_profile_image: string | undefined;
+  product_id: string | undefined;
+  product_name: string | undefined;
+  product_description: string | undefined;
+  product_price: number | undefined;
+}

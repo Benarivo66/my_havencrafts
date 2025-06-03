@@ -1,4 +1,5 @@
 import { fetchSellers } from "@/app/lib/data";
+import Link from 'next/link';
 
 export default async function Page() {
   const sellers = await fetchSellers();
@@ -24,6 +25,12 @@ export default async function Page() {
           {seller.phone && (
             <p className="text-sm text-gray-500 mt-2">{seller.phone}</p>
           )}
+          <Link
+            href={`/dashboard/sellers/${seller.id}`}
+            className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            View Products
+          </Link>
         </div>
       )})}
     </div>

@@ -2,7 +2,6 @@ import { fetchProducts } from "@/app/lib/data";
 
 export default async function Page() {
   const products = await fetchProducts();
-
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
       {products.map((product) => (
@@ -11,7 +10,7 @@ export default async function Page() {
           className="bg-white shadow-md rounded-2xl p-4 flex flex-col"
         >
             <img
-              src={product.name.split(" ")[product.name.split(" ").length - 1].toLowerCase()}
+              src={`/products/${product.name.split(" ")[product.name.split(" ").length - 1].toLowerCase()}.webp`}
               alt={product.name}
               className="w-full h-48 object-cover rounded-lg mb-4"
             />
