@@ -9,7 +9,7 @@ export default function ReviewForm({
   sellerId,
   productId,
 }: {
-  sellerId: string;
+  sellerId: string | undefined;
   productId: string;
 }) {
   const initialState: ReviewState = { message: null, errors: {} };
@@ -17,7 +17,6 @@ export default function ReviewForm({
   const [state, formAction] = useActionState(createReview, initialState);
   const [rating, setRating] = useState<number>(5);
 
-  // console.log('Rendering ReviewForm with sellerId:', sellerId);
 
   return (
     <form action={formAction} className="space-y-6">
