@@ -7,106 +7,110 @@ import { revalidatePath } from 'next/cache';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 
-// const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
  
-// const FormSchema = z.object({
-//     id: z.string(),
-//     customerId: z.string({
-//       invalid_type_error: 'Please select a customer.',
-//     }),
-//     amount: z.coerce
-//       .number()
-//       .gt(0, { message: 'Please enter an amount greater than $0.' }),
-//     status: z.enum(['pending', 'paid'], {
-//       invalid_type_error: 'Please select an invoice status.',
-//     }),
-//     date: z.string(),
-//   });
+const updateProductFormSchema = z.object({
+    id: z.string(),
+    description: z.string({
+      invalid_type_error: 'Please write a description',
+    }),
+    sellerId: z.string(),
+  });
 
-//   export type State = {
-//     errors?: {
-//       customerId?: string[];
-//       amount?: string[];
-//       status?: string[];
-//     };
-//     message?: string | null;
-//   };
- 
-// const CreateInvoice = FormSchema.omit({ id: true, date: true });
-// const UpdateInvoice = FormSchema.omit({ id: true, date: true });
- 
-// export async function createInvoice(prevState: State, formData: FormData) {
-//     const validatedFields = CreateInvoice.safeParse({
-//       customerId: formData.get('customerId'),
-//       amount: formData.get('amount'),
-//       status: formData.get('status'),
-//     });
+const createReviewFormSchema = z.object({
+    id: z.string(),
+    content: z.string({
+      invalid_type_error: 'Please write a content',
+    }),
+    rating:z.coerce
+      .number()
+      .min(1, { message: 'Rating must be at least 1.' })
+      .max(5, { message: 'Rating cannot be more than 5.' }),
+    sellerId: z.string(),
+    productId: z.string()
+  });
 
-//     if (!validatedFields.success) {
-//         return {
-//           errors: validatedFields.error.flatten().fieldErrors,
-//           message: 'Missing Fields. Failed to Create Invoice.',
-//         };
-//       }
-    
-//     const { customerId, amount, status } = validatedFields.data;
-//     const amountInCents = amount * 100;
-//     const date = new Date().toISOString().split('T')[0];
-   
-//     try {
-//       await sql`
-//         INSERT INTO invoices (customer_id, amount, status, date)
-//         VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
-//       `;
-//     } catch (error) {
-//         return {
-//             message: 'Database Error: Failed to Create Invoice.',
-//           };
-//     }
-   
-//     revalidatePath('/dashboard/invoices');
-//     redirect('/dashboard/invoices');
-//   }
+  export type State = {
+    errors?: {
+      description?: string[];
+    };
+    message?: string | null;
+  };
 
-//   export async function updateInvoice(
-//     id: string,
-//     prevState: State,
-//     formData: FormData,
-//   ) {
-//     const validatedFields = UpdateInvoice.safeParse({
-//       customerId: formData.get('customerId'),
-//       amount: formData.get('amount'),
-//       status: formData.get('status'),
-//     });
-   
-//     if (!validatedFields.success) {
-//       return {
-//         errors: validatedFields.error.flatten().fieldErrors,
-//         message: 'Missing Fields. Failed to Update Invoice.',
-//       };
-//     }
-   
-//     const { customerId, amount, status } = validatedFields.data;
-//     const amountInCents = amount * 100;
-   
-//     try {
-//       await sql`
-//         UPDATE invoices
-//         SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
-//         WHERE id = ${id}
-//       `;
-//     } catch (error) {
-//       return { message: 'Database Error: Failed to Update Invoice.' };
-//     }
-   
-//     revalidatePath('/dashboard/invoices');
-//     redirect('/dashboard/invoices');
-//   }
+  export type ReviewState = {
+    errors?: {
+      rating?: string[];
+      content?: string[];
+    };
+    message?: string | null;
+  };
  
-// export async function deleteInvoice(id: string) {
-//     await sql`DELETE FROM invoices WHERE id = ${id}`;
-//     revalidatePath('/dashboard/invoices');
-// }
+const CreateReview = createReviewFormSchema.omit({ id: true});
+const UpdateInvoice = updateProductFormSchema.omit({ id: true });
+ 
+export async function createReview(prevState: ReviewState, formData: FormData) {
+    const validatedFields = CreateReview.safeParse({
+      productId: formData.get('productId'),
+      sellerId: formData.get('sellerId'),
+      rating: formData.get('rating'),
+      content: formData.get('content')
+    });
+
+    if (!validatedFields.success) {
+        return {
+          errors: validatedFields.error.flatten().fieldErrors,
+          message: 'Missing Fields. Failed to Create Review.',
+        };
+      }
+
+    const { productId, sellerId, rating, content } = validatedFields.data;
+   
+    try {
+      await sql`
+        INSERT INTO reviews (productId, sellerId, rating, content)
+        VALUES (${productId}, ${sellerId}, ${rating}, ${content})
+      `;
+    } catch (error) {
+        return {
+            message: 'Database Error: Failed to Create Review.',
+          };
+    }
+   
+    revalidatePath(`/dashboard/sellers/${sellerId}`);
+    redirect(`/dashboard/sellers/${sellerId}`);
+  }
+
+  export async function updateProduct(
+    id: string,
+    prevState: State,
+    formData: FormData,
+  ) {
+    const validatedFields = UpdateInvoice.safeParse({
+      description: formData.get('description'),
+      sellerId: formData.get('sellerId')
+    });
+   
+    if (!validatedFields.success) {
+      return {
+        errors: validatedFields.error.flatten().fieldErrors,
+        message: 'Missing Fields. Failed to Update Product.',
+      };
+    }
+   
+    const { description, sellerId } = validatedFields.data;   
+    try {
+      await sql`
+        UPDATE products
+        SET description = ${description}
+        WHERE id = ${id}
+      `;
+    } catch (error) {
+      return { message: 'Database Error: Failed to Update Product' };
+    }
+   
+    revalidatePath(`/dashboard/sellers/${sellerId}/`);
+    redirect(`/dashboard/sellers/${sellerId}/`);
+  }
 
 export async function authenticate(
     prevState: string | undefined,

@@ -1,5 +1,4 @@
 import { fetchProducts } from "@/app/lib/data";
-
 export default async function Page() {
   const products = await fetchProducts();
   return (
@@ -17,6 +16,7 @@ export default async function Page() {
           <h2 className="text-xl font-semibold">{product.name}</h2>
           <p className="text-gray-600 mt-2">{product.description}</p>
           <p className="text-lg font-bold text-green-700 mt-4">${product.price}</p>
+          
         </div>
       ))}
     </div>

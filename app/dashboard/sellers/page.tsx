@@ -27,7 +27,7 @@ export default async function Page() {
           )}
           <Link
             href={`/dashboard/sellers/${seller.id}`}
-            className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+            className="mt-4 inline-block bg-secondary text-white px-4 py-2 rounded hover:bg-tertiary"
           >
             View Products
           </Link>

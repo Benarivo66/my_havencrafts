@@ -1,12 +1,13 @@
 import { fetchSellerWithProducts } from "@/app/lib/data";
-import { SellerField, ProductField } from "@/app/lib/definitions";
+import ProductCard from "@/app/ui/ProductCard";
+import { fetchReviewsbyProduct } from "@/app/lib/data";
 
 interface SellerPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function SellerPage({ params }: SellerPageProps) {
-  const seller = await fetchSellerWithProducts(params.id);
+  const seller = await fetchSellerWithProducts((await params).id);
 
   return (
     <div className="p-4">
@@ -24,19 +25,24 @@ export default async function SellerPage({ params }: SellerPageProps) {
 
       <h3 className="text-xl font-bold mt-8 mb-4">Products</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {seller!.products.map((product) => (
-          <div key={product.id} className="bg-tertiary2 shadow rounded-lg p-4">
-             <img
-              src={`/products/${product.name.split(" ")[product.name.split(" ").length - 1].toLowerCase()}.webp`}
-              alt={product.name}
-              className="w-full h-48 object-cover rounded-lg mb-4"
-            />
-            <h4 className="text-lg font-semibold">{product.name}</h4>
-            <p className="text-sm text-gray-600">{product.description}</p>
-            <p className="text-sm font-medium mt-2">${product.price}</p>
-
-          </div>
-        ))}
+        {await Promise.all(
+    seller!.products.map(async (product) => {
+      const reviews = await fetchReviewsbyProduct(product.id);
+      // const rating = reviews?.reduce((sum, r) => sum + r.rating, 0) ?? 0;
+      const rating = reviews && reviews.length > 0
+  ? Math.round((reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length) * 10) / 10
+  : 0;
+  
+      return (
+        <ProductCard
+          key={product.id}
+          product={product}
+          sellerId={seller!.id}
+          rating={rating}
+        />
+      );
+    })
+  )}
       </div>
     </div>
   );

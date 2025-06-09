@@ -2,10 +2,28 @@ import postgres from 'postgres';
 import {
     SellerField,
     ProductField,
+    ReviewField,
     SellerWithProductsField
 } from './definitions';
 
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
+
+// /lib/data.ts
+export async function fetchProductById(productId: string): Promise<ProductField | null> {
+  try {
+    const result = await sql<ProductField[]>`
+      SELECT id, name, description, price, sellerId
+      FROM products
+      WHERE id = ${productId}
+      LIMIT 1
+    `;
+
+    return result.length > 0 ? result[0] : null;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch product.');
+  }
+}
 
 export async function fetchSellers() {
   try {
@@ -26,6 +44,22 @@ export async function fetchSellers() {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch all sellers.');
+  }
+}
+export async function fetchReviewsbyProduct(productId: string) : Promise<ReviewField[]>  {
+  try {
+    const reviews = await sql<ReviewField[]>`
+      SELECT
+        rating,
+        content
+      FROM reviews
+      WHERE productId = ${productId}
+    `;
+
+    return reviews;
+  } catch (err) {
+    console.error('Database Error:', err);
+    throw new Error('Failed to fetch all reviews.');
   }
 }
 export async function fetchProducts() {
@@ -103,4 +137,6 @@ export async function fetchSellerWithProducts(sellerId: string): Promise<SellerW
     throw new Error('Failed to fetch seller with products.');
   }
 }
+
+
 
