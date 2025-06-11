@@ -192,6 +192,51 @@ const products = [
     category: "Gift Sets",
     sellerId: "cc6adf23-5c0a-4aa1-95b3-f342c4db7f44"
   },
+   {
+    id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345611",
+    name: "Macramé Wall Hanging",
+    description: "Boho-style macramé wall decor made with natural cotton rope.",
+    price: 38.5,
+    imageUrl: "https://example.com/images/macrame-wall-hanging.jpg",
+    category: "Home Decor",
+    sellerId: "bb7d3e98-04f2-4e44-9f78-12d0c95eb7af", 
+  },
+  {
+    id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345612",
+    name: "Wool Felt Baby Mobile",
+    description: "Hand-sewn wool felt mobile featuring soft clouds and stars.",
+    price: 29.99,
+    imageUrl: "https://example.com/images/baby-mobile.jpg",
+    category: "Baby",
+    sellerId: "d419ac48-9084-4b99-964b-ef452a761102",
+  },
+  {
+    id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345613",
+    name: "Earrings Coconut Shell",
+    description: "Eco-chic earrings made from natural coconut shell buttons.",
+    price: 14.25,
+    imageUrl: "https://example.com/images/coconut-earrings.jpg",
+    category: "Jewelry",
+    sellerId: "aa9f18c2-1f9f-4239-9c38-7c56e2abf11e", 
+  },
+  {
+    id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345614",
+    name: "Recycled Fabric Bag Tote",
+    description: "Stylish tote bag handcrafted from recycled colorful textiles.",
+    price: 26.0,
+    imageUrl: "https://example.com/images/fabric-tote.jpg",
+    category: "Fashion",
+    sellerId: "e5098b1a-e331-4d41-a92f-9ecb632cb018", 
+  },
+  {
+    id: "c1a1f5e0-3f2a-4e1e-8e02-a63e12345615",
+    name: "Miniature Clay Vase",
+    description: "Tiny decorative vase hand-shaped from local clay, perfect for desk decor.",
+    price: 20.0,
+    imageUrl: "https://example.com/images/clay-vase.jpg",
+    category: "Art",
+    sellerId: "c3e7adf1-0d3f-42f7-b5f4-9423d2aa245e",
+  }
 ];
 
 

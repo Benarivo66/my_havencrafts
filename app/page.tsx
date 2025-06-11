@@ -1,8 +1,4 @@
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
-import styles from '@/app/ui/home.module.css';
 import { roboto } from '@/app/ui/fonts';
-import Image from 'next/image';
 
 export default function Page() {
   return (
@@ -33,13 +29,13 @@ export default function Page() {
       <section className="px-4 md:px-16 text-center">
         <h2 className={`text-3xl font-semibold mb-4 ${roboto.className}`}>About Us</h2>
         <p className="max-w-3xl mx-auto text-lg text-gray-700">
-        Handcraft Haven is more than a marketplace — it's a vibrant community where artisans, makers, and creators come together to share their stories through handcrafted work. Our platform empowers local and independent artisans to showcase their unique skills and offer their handmade treasures to the world.
+        Handcraft Haven is more than a marketplace — it&apos;s a vibrant community where artisans, makers, and creators come together to share their stories through handcrafted work. Our platform empowers local and independent artisans to showcase their unique skills and offer their handmade treasures to the world.
         </p>
         <p className="max-w-3xl mx-auto text-lg text-gray-700">
         From delicately woven baskets to intricately sculpted ceramics, every product featured here is a testament to dedication, heritage, and passion. At Handcraft Haven, we believe in preserving cultural traditions while supporting creativity and innovation.
         </p>
         <p className="max-w-3xl mx-auto text-lg text-gray-700">
-        Whether you're a craftsman, collector, or simply someone who values authenticity, you're welcome here. Join us in celebrating the artistry of human hands — where every item has a soul, and every purchase makes a difference.
+        Whether you&apos;re a craftsman, collector, or simply someone who values authenticity, you&apos;re welcome here. Join us in celebrating the artistry of human hands — where every item has a soul, and every purchase makes a difference.
         </p>
       </section>
 
@@ -48,11 +44,11 @@ export default function Page() {
         <h2 className={`text-3xl font-semibold mb-8 ${roboto.className}`}>What Our Users Say</h2>
         <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
           <blockquote className="bg-white p-6 rounded shadow">
-            <p className="text-lg italic">"This platform gave my craft the audience it deserves. Orders have doubled!"</p>
+            <p className="text-lg italic">&quot;This platform gave my craft the audience it deserves. Orders have doubled!&quot;</p>
             <footer className="mt-4 font-semibold">— Amina, Basket Weaver</footer>
           </blockquote>
           <blockquote className="bg-white p-6 rounded shadow">
-            <p className="text-lg italic">"Selling on Handcraft Haven has been a game changer. I love the community here."</p>
+            <p className="text-lg italic">&quot;Selling on Handcraft Haven has been a game changer. I love the community here.&quot;</p>
             <footer className="mt-4 font-semibold">— Chuks, Wood Carver</footer>
           </blockquote>
         </div>

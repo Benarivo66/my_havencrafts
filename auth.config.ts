@@ -20,6 +20,24 @@ import type { NextAuthConfig } from 'next-auth';
 //   providers: [], // Add providers with an empty array for now
 // } satisfies NextAuthConfig;
 
+// export const authConfig = {
+//   pages: {
+//     signIn: '/login',
+//   },
+//   callbacks: {
+//     authorized({ auth, request: { nextUrl } }) {
+//       const isLoggedIn = !!auth?.user;
+//       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
+
+//       if (isOnDashboard) {
+//         return isLoggedIn;
+//       }
+//       return true;
+//     },
+//   },
+//   providers: [],
+// } satisfies NextAuthConfig;
+
 export const authConfig = {
   pages: {
     signIn: '/login',
@@ -28,12 +46,18 @@ export const authConfig = {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
+      
+      // console.log('🔐 Middleware check:');
+      // console.log('Auth object:', auth);
+      // console.log('Path:', nextUrl.pathname);
+      // console.log({ isLoggedIn, isOnDashboard });
 
-      if (isOnDashboard) {
-        return isLoggedIn;
+      if (isOnDashboard && !isLoggedIn) {
+        return false; 
       }
+
       return true;
     },
   },
-  providers: [],
+  providers: [], // Add your auth providers here
 } satisfies NextAuthConfig;

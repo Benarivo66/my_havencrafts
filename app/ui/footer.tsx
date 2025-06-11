@@ -1,4 +1,4 @@
-import { openSans, roboto } from './fonts';
+import { openSans } from './fonts';
 
 export function Footer() {
   return (

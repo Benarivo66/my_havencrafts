@@ -71,6 +71,7 @@ export async function createReview(prevState: ReviewState, formData: FormData) {
         VALUES (${productId}, ${sellerId}, ${rating}, ${content})
       `;
     } catch (error) {
+      console.error(error);
         return {
             message: 'Database Error: Failed to Create Review.',
           };
@@ -105,6 +106,7 @@ export async function createReview(prevState: ReviewState, formData: FormData) {
         WHERE id = ${id}
       `;
     } catch (error) {
+      console.error(error)
       return { message: 'Database Error: Failed to Update Product' };
     }
    

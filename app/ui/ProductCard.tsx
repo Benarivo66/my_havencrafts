@@ -4,7 +4,6 @@ import { useActionState } from 'react';
 import { updateProduct, State} from '@/app/lib/actions';
 import { useState } from 'react';
 import { ProductField } from '@/app/lib/definitions';
-import { fetchReviewsbyProduct } from '../lib/data';
 import Link from 'next/link';
 
 export default function ProductCard({ product, sellerId, rating }: { product: ProductField, sellerId: string, rating: number }) {
@@ -25,7 +24,7 @@ export default function ProductCard({ product, sellerId, rating }: { product: Pr
   ⭐ Rating: {rating}
 </p>
 
-      <Link className="mt-4 inline-block bg-secondary text-white px-4 py-2 rounded hover:bg-tertiary" href={`/dashboard/reviews/${product.id}`}>Review product</Link>
+      <Link className="mt-4 mb-4 inline-block bg-secondary text-white px-4 py-2 rounded hover:bg-tertiary" href={`/dashboard/reviews/${product.id}`}>Review product</Link>
 
       {isEditing ? (
         <form action={formAction} className="space-y-2">

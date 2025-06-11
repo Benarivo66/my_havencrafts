@@ -6,8 +6,8 @@ import { Header } from './ui/header';
  
 export const metadata: Metadata = {
   title: {
-    template: '%s | Handcraft Haven',
-    default: 'Handcraft Haven',
+    template: '%s | TEAM5 Handcraft Haven',
+    default: 'TEAM5 Handcraft Haven',
   },
   description: 'Website for Craftsmen and women to showcase their skill and products',
   metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),

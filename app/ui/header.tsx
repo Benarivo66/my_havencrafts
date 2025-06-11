@@ -12,7 +12,7 @@ export function Header() {
         </Link>
         <Link href="/dashboard/sellers/" className="hover:underline">Sellers</Link>
         <Link href="/dashboard/products/" className="hover:underline">Products</Link>
-        <Link href="#" className="hover:underline">Join Us</Link>
+        <Link href="/dashboard/join/" className="hover:underline">Join Us</Link>
       </div>
 
       <div className="flex items-center space-x-4">
