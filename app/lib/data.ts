@@ -70,7 +70,8 @@ export async function fetchProducts() {
         name,
         description,
         price,
-        sellerId
+        sellerId,
+        category
       FROM products
       ORDER BY name ASC
     `;
