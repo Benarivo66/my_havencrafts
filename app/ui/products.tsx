@@ -60,7 +60,7 @@ export default function ProductsPage({ products }: { products: ProductField[] })
         {filtered.map((product) => (
           <div
             key={product.id}
-            className="bg-white shadow-md rounded-2xl p-4 flex flex-col"
+            className="bg-tertiary2 shadow-md rounded-2xl p-4 flex flex-col"
           >
             <img
               src={`/products/${product.name.split(" ").at(-1)?.toLowerCase()}.webp`}
@@ -68,9 +68,9 @@ export default function ProductsPage({ products }: { products: ProductField[] })
               className="w-full h-48 object-cover rounded-lg mb-4"
             />
             <h2 className="text-xl font-semibold">{product.name}</h2>
-            <p className="text-gray-600 mt-2">{product.description}</p>
-            <p className="text-sm text-gray-500 mt-1">{product.category}</p>
-            <p className="text-lg font-bold text-green-700 mt-4">${product.price}</p>
+            <p className="text-tertiary1 mt-2">{product.description}</p>
+            <p className="text-sm text-tertiary1 mt-1">{product.category}</p>
+            <p className="text-lg font-bold text-secondary mt-4">${product.price}</p>
           </div>
         ))}
       </div>

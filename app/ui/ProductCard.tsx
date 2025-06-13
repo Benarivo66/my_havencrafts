@@ -55,10 +55,10 @@ export default function ProductCard({ product, sellerId, rating }: { product: Pr
         </form>
       ) : (
         <>
-          <p className="text-sm text-gray-600">{product.description}</p>
+          <p className="text-sm text-tertiary1">{product.description}</p>
           <button
             onClick={() => setIsEditing(true)}
-            className="mt-2 text-sm text-secondary underline"
+            className="mt-2 text-sm text-tertiary1 underline"
           >
             Edit Description
           </button>

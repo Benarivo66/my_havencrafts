@@ -10,7 +10,7 @@ export default async function Page() {
         return (
         <div
           key={seller.id}
-          className="bg-white shadow-md rounded-2xl p-4 flex flex-col items-center text-center"
+          className="bg-tertiary2 shadow-md rounded-2xl p-4 flex flex-col items-center text-center"
         >
           <img
             src={`/users/${seller.name.split(" ")[0].toLowerCase()}.webp`}
@@ -18,12 +18,12 @@ export default async function Page() {
             className="w-24 h-24 rounded-full object-cover mb-4"
           />
           <h2 className="text-xl font-semibold">{seller.name}</h2>
-          <p className="text-gray-600">{seller.email}</p>
+          <p className="text-tertiary1">{seller.email}</p>
           {seller.bio && (
-            <p className="text-sm text-gray-500 mt-2">{seller.bio}</p>
+            <p className="text-sm text-tertiary1 mt-2">{seller.bio}</p>
           )}
           {seller.phone && (
-            <p className="text-sm text-gray-500 mt-2">{seller.phone}</p>
+            <p className="text-sm text-tertiary1 mt-2">{seller.phone}</p>
           )}
           <Link
             href={`/dashboard/sellers/${seller.id}`}
