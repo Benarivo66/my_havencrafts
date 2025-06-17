@@ -111,6 +111,7 @@ export async function createReview(prevState: ReviewState, formData: FormData) {
     }
    
     revalidatePath(`/dashboard/sellers/${sellerId}/`);
+    revalidatePath('/dashboard/products/');
     redirect(`/dashboard/sellers/${sellerId}/`);
   }
 

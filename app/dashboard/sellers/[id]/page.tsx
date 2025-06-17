@@ -28,7 +28,6 @@ export default async function SellerPage({ params }: SellerPageProps) {
         {await Promise.all(
     seller!.products.map(async (product) => {
       const reviews = await fetchReviewsbyProduct(product.id);
-      // const rating = reviews?.reduce((sum, r) => sum + r.rating, 0) ?? 0;
       const rating = reviews && reviews.length > 0
   ? Math.round((reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length) * 10) / 10
   : 0;
