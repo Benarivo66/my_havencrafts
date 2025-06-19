@@ -1,42 +1,4 @@
 import type { NextAuthConfig } from 'next-auth';
- 
-// export const authConfig = {
-//   pages: {
-//     signIn: '/login',
-//   },
-//   callbacks: {
-//     authorized({ auth, request: { nextUrl } }) {
-//       const isLoggedIn = !!auth?.user;
-//       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
-//       if (isOnDashboard) {
-//         if (isLoggedIn) return true;
-//         return false; // Redirect unauthenticated users to login page
-//       } else if (isLoggedIn) {
-//         return Response.redirect(new URL('/dashboard', nextUrl));
-//       }
-//       return true;
-//     },
-//   },
-//   providers: [], // Add providers with an empty array for now
-// } satisfies NextAuthConfig;
-
-// export const authConfig = {
-//   pages: {
-//     signIn: '/login',
-//   },
-//   callbacks: {
-//     authorized({ auth, request: { nextUrl } }) {
-//       const isLoggedIn = !!auth?.user;
-//       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
-
-//       if (isOnDashboard) {
-//         return isLoggedIn;
-//       }
-//       return true;
-//     },
-//   },
-//   providers: [],
-// } satisfies NextAuthConfig;
 
 export const authConfig = {
   pages: {
@@ -45,19 +7,28 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');
-      
-      // console.log('🔐 Middleware check:');
-      // console.log('Auth object:', auth);
-      // console.log('Path:', nextUrl.pathname);
-      // console.log({ isLoggedIn, isOnDashboard });
+      const pathname = nextUrl.pathname;
 
-      if (isOnDashboard && !isLoggedIn) {
-        return false; 
+      // Allow public access to product list and product detail pages
+      const publicRoutes = [
+        '/dashboard/products',
+      ];
+
+      const isProductDetail = /^\/dashboard\/products\/[^\/]+$/.test(pathname);
+      const isPublicRoute = publicRoutes.includes(pathname) || isProductDetail;
+
+      if (isPublicRoute) {
+        return true; //  Allow public access
       }
 
-      return true;
+      // All other /dashboard routes require login
+      const isProtectedDashboardRoute = pathname.startsWith('/dashboard');
+      if (isProtectedDashboardRoute) {
+        return isLoggedIn;
+      }
+
+      return true; // Allow everything else (e.g., '/', '/login', etc.)
     },
   },
-  providers: [], // Add your auth providers here
+  providers: [],
 } satisfies NextAuthConfig;
